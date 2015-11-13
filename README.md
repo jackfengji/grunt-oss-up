@@ -54,6 +54,12 @@ Type: `String`
 A string value that is your aliyun oss host
 default: oss-cn-hangzhou.aliyuncs.com
 
+#### options.port
+Type: `String`
+
+An integer value that is your aliyun oss port
+default: 80
+
 #### options.bucket
 Type: `String`
 

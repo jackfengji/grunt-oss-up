@@ -37,14 +37,12 @@ module.exports = function(grunt) {
 			grunt.fail.fatal('accessKeyId, accessKeySecret and bucket are all required!');
 		}
 
-		var option = {
+        var option = {
             accessKeyId: options.accessKeyId,
-            accessKeySecret: options.accessKeySecret
+            accessKeySecret: options.accessKeySecret,
+            host: options.host || 'oss-cn-hangzhou.aliyuncs.com',
+            port: options.port || 80
         };
-
-        if (options.host) {
-            option.host = options.host
-        }
 
 		//creat a new oss-client
 		var	oss = new OSS.OssClient(option),
@@ -97,7 +95,7 @@ module.exports = function(grunt) {
 					grunt.log.error(chalk.cyan(o.srcFile) + chalk.red(' is a directory, skip it!'));
 					callback();
 				}else {
-					grunt.log.ok('Start uploading file '+ chalk.cyan(o.srcFile));
+					grunt.log.ok('Start uploading file '+ chalk.cyan(o.srcFile) + ' to ' + chalk.cyan(o.bucket + '/' + o.object));
 					oss.putObject(o, function (error, result) {
 						callback(error, result);
 					});
