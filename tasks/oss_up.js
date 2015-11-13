@@ -36,10 +36,16 @@ module.exports = function(grunt) {
 		if(!options.accessKeyId || !options.accessKeySecret || !options.bucket){
 			grunt.fail.fatal('accessKeyId, accessKeySecret and bucket are all required!');
 		}
+
 		var option = {
-				accessKeyId: options.accessKeyId,
-				accessKeySecret: options.accessKeySecret
-			};
+            accessKeyId: options.accessKeyId,
+            accessKeySecret: options.accessKeySecret
+        };
+
+        if (options.host) {
+            option.host = options.host
+        }
+
 		//creat a new oss-client
 		var	oss = new OSS.OssClient(option),
 			uploadQue = [];

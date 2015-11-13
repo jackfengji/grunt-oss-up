@@ -48,6 +48,12 @@ Type: `String`
 
 A string value that is your aliyun oss accessKeySecret.
 
+#### options.host
+Type: `String`
+
+A string value that is your aliyun oss host
+default: oss-cn-hangzhou.aliyuncs.com
+
 #### options.bucket
 Type: `String`
 
