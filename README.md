@@ -76,6 +76,12 @@ function(dest, src){
 ```
 A function that return a oss objectName by dest and src. Default return grunt task files' dest + files' name.
 There is another [example](https://github.com/marshalYuan/grunt-oss-up/issues/1)
+
+#### options.userHeaders
+Type: `Object`
+
+See oss-client userHeaders for more information
+
 ### Usage Examples
 
 #### Default Options
