@@ -104,6 +104,15 @@ module.exports = function(grunt) {
                 } else {
                     grunt.log.ok('Start uploading file ' + chalk.cyan(o.srcFile) + ' to ' + chalk.cyan(o.bucket + '/' + o.object));
                     oss.putObject(o, function(error, result) {
+                        if (error) {
+                            grunt.log.error('Uploading ' + chalk.cyan(o.srcFile) + ' failed, retrying');
+                            oss.putObject(o, function(error, result) {
+                                callback(error, result);
+                            });
+
+                            return;
+                        }
+
                         callback(error, result);
                     });
                 }
